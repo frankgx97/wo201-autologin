@@ -24,9 +24,9 @@ chknetwork()
     ret_code=`curl -I -s --connect-timeout $timeout $target -w %{http_code} | tail -n1`    
     if [ "x$ret_code" = "x200" ];
     then
-        return 1;
+        echo 1;
     else
-        return 0;
+        echo 0;
     fi    
 }
 
@@ -38,11 +38,10 @@ heartbeat()
     -H "Accept-Encoding:gzip,deflate" -H "Accept-Language:en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4" \
     -H "Accept: application/json, text/javascript, */*" -b "JSESSIONID=D4CB5C7CEC0B78473E4C2439AE4A8CCD" \
     -v "http://114.247.41.52:808/";
-    curl -v "http://www.baidu.com/"
+    curl -v "http://www.baidu.com/" > /dev/null;
 }
 
-#network_status=chknetwork;
-if [chknetwork == 1]
+if [ $(chknetwork) == 1 ]
 then
     heartbeat;
 else
