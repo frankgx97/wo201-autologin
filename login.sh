@@ -1,7 +1,7 @@
 #!/bin/sh
 source $(dirname $0)/config.sh;
 
-function connect()
+function connect
 {
     echo "USERNAME:"$username;
     ifdown wan;
@@ -17,7 +17,7 @@ function connect()
     -v "http://114.247.41.52:808/protalAction!portalAuth.action?";
 }
 
-function chknetwork()
+function chknetwork
 {
     timeout=5    
     target=www.baidu.com    
@@ -30,7 +30,7 @@ function chknetwork()
     fi    
 }
 
-function heartbeat()
+function heartbeat
 {
     echo "sending heartbeat."
     curl -A "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.20 Mobile Safari/537.36" \
