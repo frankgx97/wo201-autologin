@@ -38,6 +38,11 @@ git clone https://git.guoduhao.cn/gdh/wo201-auth
 ```
 */1 * * * * /path/to/project/login.sh
 ```
+openwrt的crond默认是关闭的，需要手动打开
+```
+/etc/init.d/cron start
+/etc/init.d/cron enable
+```
 
 # 已知可用的学校
 - 北京工业大学
