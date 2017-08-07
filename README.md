@@ -13,6 +13,7 @@
 
 # 使用
 1. 首先，你需要一个安装了curl的openwrt路由器，并且将网线接口配置为wan口。
+
 2. 克隆代码到路由器
 ```
 git clone https://github.com/hyriamb/wo201-autologin
@@ -20,15 +21,19 @@ git clone https://github.com/hyriamb/wo201-autologin
 git clone https://git.guoduhao.cn/gdh/wo201-auth
 ```
 如果路由器不方便使用git，可以打包下载之后用SCP工具传上路由器。
+
 3. 配置用户名，密码及basip
 将`config.sample.sh`复制为`config.sh`，填入你的用户名（不含@wo201）、密码和basip。basip可以通过手动登录时自动跳转的网页的URL里面找到。
+
 4. 测试登录
 执行`./login.sh`，如果出现`login success`则成功。
+
 5. 添加开机启动和计划任务
 编辑`/etc/rc.local/`，在`exit 0`前面加入
 ```
 /path/to/project/login.sh
 ```
+
 编辑crontab，加入
 ```
 */1 * * * * /path/to/project/login.sh
