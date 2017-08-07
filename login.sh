@@ -5,7 +5,9 @@ connect()
 {
     echo "USERNAME:"$username;
     ifdown wan;
+    sleep 1s;
     ifup wan;
+    sleep 3s;
     . /lib/functions/network.sh;
     network_get_ipaddr ip wan; 
     echo "IP:"$ip;
