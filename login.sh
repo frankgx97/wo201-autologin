@@ -5,9 +5,9 @@ connect()
 {
     echo "USERNAME:"$username;
     ifdown wan;
-    sleep 1s;
-    ifup wan;
     sleep 3s;
+    ifup wan;
+    sleep 10s;
     . /lib/functions/network.sh;
     network_get_ipaddr ip wan; 
     echo "IP:"$ip;
@@ -34,7 +34,6 @@ chknetwork()
 
 heartbeat()
 {
-    echo "sending heartbeat."
     curl -A "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.20 Mobile Safari/537.36" \
     -H "Pragma:no-cache" -H "Cache-Control:no-cache" -H "Referer:http://114.247.41.52:808/protalAction!toSuccess.action" \
     -H "Accept-Encoding:gzip,deflate" -H "Accept-Language:en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4" \
@@ -45,7 +44,9 @@ heartbeat()
 
 if [ $(chknetwork) == 1 ]
 then
+    echo "network up, sending heartbeat."
     heartbeat;
 else
+    echo "network down, connecting."
     connect;
 fi
