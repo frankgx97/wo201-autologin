@@ -4,12 +4,8 @@ source $(dirname $0)/config.sh;
 connect()
 {
     echo "USERNAME:"$username;
-    ifdown wan;
-    sleep 3s;
-    ifup wan;
-    sleep 10s;
-    . /lib/functions/network.sh;
-    network_get_ipaddr ip wan; 
+    restart_wan
+    ip=`ifconfig eth2.2 | awk -F'[ :]+' '$0 ~ "inet addr"{print $4}'`
     echo "IP:"$ip;
     curl -A "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.20 Mobile Safari/537.36" \
     -H "Pragma:no-cache" -H "Cache-Control:no-cache" -H "Referer:http://114.247.41.52:808/protalAction!index.action?wlanuserip=$ip&basip=$basip" \
