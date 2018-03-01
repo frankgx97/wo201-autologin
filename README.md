@@ -26,6 +26,7 @@ git clone https://git.guoduhao.cn/gdh/wo201-auth
 
 3. 配置用户名，密码及basip
 将`config.sample.sh`复制为`config.sh`，填入你的用户名（不含@wo201）、密码和basip。basip可以通过手动登录时自动跳转的网页的URL里面找到。
+如果你不知道怎么找到basip，参考这里：[https://lyphix.im/?p=164](https://lyphix.im/?p=164)
 
 4. 测试登录
 执行`./login.sh`，如果出现`login success`则成功。
