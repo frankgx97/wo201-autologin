@@ -18,7 +18,7 @@
 
 2. 克隆代码到路由器
 ```
-git clone https://github.com/hyriamb/wo201-autologin
+git clone https://github.com/nyanim/wo201-autologin
 或
 git clone https://git.guoduhao.cn/gdh/wo201-auth
 ```
